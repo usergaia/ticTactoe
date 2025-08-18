@@ -44,6 +44,10 @@
   color: #888;
 }
 
+.win-blur {
+  backdrop-filter: blur(2px);
+}
+
 @media (max-width: 640px) {
   .mobile {
     padding: 1rem;
