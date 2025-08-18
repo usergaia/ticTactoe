@@ -20,5 +20,5 @@ export function UpdateBoard() {
 
   const currentSymbol = isXTurn ? 'X' : 'O';
 
-  return { boardVal, handleTurn, resetBoard };
+  return { boardVal, handleTurn, resetBoard, currentSymbol };
 }
