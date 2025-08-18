@@ -1,12 +1,12 @@
 import { UpdateBoard } from '../hooks/boardHook';
 
 export const GameBoard = () => {
-  const { boardVal, handleTurn, resetBoard } = UpdateBoard();
+  const { boardVal, handleTurn, resetBoard, currentSymbol } = UpdateBoard();
   return (
     <>
       <div className="mr-4 ml-4 flex flex-row justify-between">
         <div className="utility text-black">
-          <b>X</b> Turn
+          <b>{currentSymbol}</b> Turn
         </div>
         <div className="utility text-red-600" onClick={resetBoard}>
           Restart
