@@ -104,6 +104,10 @@
 }
 
 @media (min-width: 1024px) {
+  * {
+    margin-top: 0%;
+    margin-bottom: 0%;
+  }
   /* lg+ */
   .custom-responsive {
     width: 400px;
@@ -112,6 +116,7 @@
     overflow: hidden;
     position: relative;
     bottom: -35px;
+    scale: 85%;
   }
   .cells {
     aspect-ratio: 1/1;

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { checkWin } from '../utils/winLogic';
+import { getMove } from '../utils/botLogic';
 
 export function UpdateBoard() {
   const [isXTurn, setisXTurn] = useState(true);
@@ -25,6 +26,31 @@ export function UpdateBoard() {
     }
   };
 
+  const botMove = (idx) => {
+    if (boardVal[idx] || winner) return;
+
+    const newBoard = [...boardVal];
+
+    console.log('Current:', isXTurn);
+    newBoard[idx] = currentSymbol;
+    setBoardVal(newBoard);
+    setisXTurn((prev) => !prev);
+    console.log('Current:', isXTurn);
+
+    const botIdx = getMove(newBoard);
+    newBoard[botIdx] = currentSymbol === 'X' ? 'O' : 'X';
+
+    setBoardVal(newBoard);
+    setisXTurn((prev) => !prev);
+
+    const result = checkWin(newBoard);
+    setWinner(result);
+
+    if (!result && newBoard.every((cell) => cell !== null)) {
+      setisFull(true);
+    }
+  };
+
   const clearBoard = () => {
     setBoardVal(Array(9).fill(null));
     setWinner(null);
@@ -39,5 +65,6 @@ export function UpdateBoard() {
     clearBoard,
     currentSymbol,
     winner,
+    botMove,
   };
 }
