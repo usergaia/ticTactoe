@@ -22,6 +22,11 @@ export const GameBoard = () => {
     clearScore();
   };
 
+  const handleToggle = () => {
+    clearBoard();
+    toggleGameMode();
+  };
+
   return (
     <>
       {/* ------------- toggle btn ------------- */}
@@ -33,7 +38,7 @@ export const GameBoard = () => {
             type="checkbox"
             className="peer sr-only"
             checked={isPlayerMode}
-            onChange={() => toggleGameMode()}
+            onChange={handleToggle}
           />
           <div className="peer h-6 w-11 rounded-full bg-gray-300 transition-colors duration-300 peer-checked:bg-blue-500"></div>
           <div className="absolute top-0.5 left-0.5 h-5 w-5 rounded-full border border-gray-300 bg-white shadow transition-transform duration-300 peer-checked:translate-x-5"></div>
