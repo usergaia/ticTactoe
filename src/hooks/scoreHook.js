@@ -4,7 +4,7 @@ export function UpdateScore(winner, isFull) {
   const [scoreX, setScoreX] = useState(0);
   const [scoreO, setScoreO] = useState(0);
   const [tieScore, setTieScore] = useState(0);
-  const lastRound = useRef({ winner: null, isFull: false });
+  const lastRound = useRef({ winner: null, isFull: false }); // prevent memory leaks
 
   useEffect(() => {
     if (winner && lastRound.current.winner !== winner) {
