@@ -1,6 +1,7 @@
 export const Players = ({ scoreX, scoreO, tieScore }) => {
   return (
     <>
+      {/* player container */}
       <div className="players">
         <div className="flex flex-row rounded-lg">
           <div className="player-cont inset-2 border-2 border-l-8 border-red-700/10 border-l-red-700 bg-[#ff8a5c4d] text-left font-mono font-bold shadow-lg">
@@ -10,6 +11,8 @@ export const Players = ({ scoreX, scoreO, tieScore }) => {
             Player <span className="text-cyan-600">Ｏ</span>
           </div>
         </div>
+
+        {/* score container */}
         <div className="flex flex-row rounded-lg">
           <div className="score-cont-x">
             <span className="score text-rose-600">{scoreX}</span>
