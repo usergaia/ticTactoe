@@ -15,16 +15,14 @@ export function checkWin(board) {
     [2, 4, 6],
   ];
 
-  console.log(board);
-
   for (const combo of winningCombos) {
     let a = combo[0];
     let b = combo[1];
     let c = combo[2];
 
     if (board[a] !== null && board[a] === board[b] && board[a] === board[c]) {
-      return board[a];
+      return { winner: board[a], win_cell: combo };
     }
   }
-  return null;
+  return null; // no winner
 }
