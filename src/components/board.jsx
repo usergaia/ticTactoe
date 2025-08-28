@@ -1,6 +1,5 @@
 import { UpdateBoard } from '../hooks/boardHook';
-import { PlayerO } from './animO';
-import { PlayerX } from './animX';
+import { Cell } from './cell';
 import { Players } from './players';
 import { UpdateScore } from '../hooks/scoreHook';
 import { UpdateGameMode } from '../hooks/toggleHook';
@@ -93,154 +92,80 @@ export const GameBoard = () => {
         {!isFull && (
           <>
             <div className="flex flex-row items-center justify-center border-b-2 border-[rgba(136,136,136,0.3)]">
-              <div
-                className={`cells ${boardVal[0] == null ? 'cursor-pointer' : 'pointer-none'} flex rounded-tl-2xl ${winCell && winCell.includes(0) ? 'bg-green-200' : ''}`}
-                onClick={() => {
-                  if (!isThinking) {
-                    isPlayerMode ? handleTurn(0) : botMove(0);
-                  }
-                }}
-              >
-                {boardVal[0] === 'O' ? (
-                  <PlayerO key={`O-0-${boardVal[0]}`} />
-                ) : boardVal[0] === 'X' ? (
-                  <PlayerX key={`X-0-${boardVal[0]}`} />
-                ) : (
-                  boardVal[0]
-                )}
-              </div>
-              <div
-                className={`cells ${boardVal[1] == null ? 'cursor-pointer' : 'pointer-none'} flex border-r-2 border-l-2 ${winCell && winCell.includes(1) ? 'bg-green-200' : ''}`}
-                onClick={() => {
-                  if (!isThinking) {
-                    isPlayerMode ? handleTurn(1) : botMove(1);
-                  }
-                }}
-              >
-                {boardVal[1] === 'O' ? (
-                  <PlayerO key={`O-1-${boardVal[1]}`} />
-                ) : boardVal[1] === 'X' ? (
-                  <PlayerX key={`X-1-${boardVal[1]}`} />
-                ) : (
-                  boardVal[1]
-                )}
-              </div>
-              <div
-                className={`cells ${boardVal[2] == null ? 'cursor-pointer' : 'pointer-none'} flex rounded-tr-2xl ${winCell && winCell.includes(2) ? 'bg-green-200' : ''}`}
-                onClick={() => {
-                  if (!isThinking) {
-                    isPlayerMode ? handleTurn(2) : botMove(2);
-                  }
-                }}
-              >
-                {boardVal[2] === 'O' ? (
-                  <PlayerO key={`O-2-${boardVal[2]}`} />
-                ) : boardVal[2] === 'X' ? (
-                  <PlayerX key={`X-2-${boardVal[2]}`} />
-                ) : (
-                  boardVal[2]
-                )}
-              </div>
+              <Cell
+                index={0}
+                value={boardVal[0]}
+                onClick={isPlayerMode ? handleTurn : botMove}
+                disabled={isThinking}
+                isWinning={winCell && winCell.includes(0)}
+                extraClass="rounded-tl-2xl"
+              />
+              <Cell
+                index={1}
+                value={boardVal[1]}
+                onClick={isPlayerMode ? handleTurn : botMove}
+                disabled={isThinking}
+                isWinning={winCell && winCell.includes(1)}
+                extraClass="border-r-2 border-l-2"
+              />
+              <Cell
+                index={2}
+                value={boardVal[2]}
+                onClick={isPlayerMode ? handleTurn : botMove}
+                disabled={isThinking}
+                isWinning={winCell && winCell.includes(2)}
+                extraClass="rounded-tr-2xl"
+              />
             </div>
             <div className="flex flex-row items-center justify-center border-b-2 border-[rgba(136,136,136,0.3)]">
-              <div
-                className={`cells ${boardVal[3] == null ? 'cursor-pointer' : 'pointer-none'} flex ${winCell && winCell.includes(3) ? 'bg-green-200' : ''}`}
-                onClick={() => {
-                  if (!isThinking) {
-                    isPlayerMode ? handleTurn(3) : botMove(3);
-                  }
-                }}
-              >
-                {boardVal[3] === 'O' ? (
-                  <PlayerO key={`O-3-${boardVal[3]}`} />
-                ) : boardVal[3] === 'X' ? (
-                  <PlayerX key={`X-3-${boardVal[3]}`} />
-                ) : (
-                  boardVal[3]
-                )}
-              </div>
-              <div
-                className={`cells ${boardVal[4] == null ? 'cursor-pointer' : 'pointer-none'} flex border-r-2 border-l-2 ${winCell && winCell.includes(4) ? 'bg-green-200' : ''}`}
-                onClick={() => {
-                  if (!isThinking) {
-                    isPlayerMode ? handleTurn(4) : botMove(4);
-                  }
-                }}
-              >
-                {boardVal[4] === 'O' ? (
-                  <PlayerO key={`O-4-${boardVal[4]}`} />
-                ) : boardVal[4] === 'X' ? (
-                  <PlayerX key={`X-4-${boardVal[4]}`} />
-                ) : (
-                  boardVal[4]
-                )}
-              </div>
-              <div
-                className={`cells ${boardVal[5] == null ? 'cursor-pointer' : 'pointer-none'} flex ${winCell && winCell.includes(5) ? 'bg-green-200' : ''}`}
-                onClick={() => {
-                  if (!isThinking) {
-                    isPlayerMode ? handleTurn(5) : botMove(5);
-                  }
-                }}
-              >
-                {boardVal[5] === 'O' ? (
-                  <PlayerO key={`O-5-${boardVal[5]}`} />
-                ) : boardVal[5] === 'X' ? (
-                  <PlayerX key={`X-5-${boardVal[5]}`} />
-                ) : (
-                  boardVal[5]
-                )}
-              </div>
+              <Cell
+                index={3}
+                value={boardVal[3]}
+                onClick={isPlayerMode ? handleTurn : botMove}
+                disabled={isThinking}
+                isWinning={winCell && winCell.includes(3)}
+              />
+              <Cell
+                index={4}
+                value={boardVal[4]}
+                onClick={isPlayerMode ? handleTurn : botMove}
+                disabled={isThinking}
+                isWinning={winCell && winCell.includes(4)}
+                extraClass="border-r-2 border-l-2"
+              />
+              <Cell
+                index={5}
+                value={boardVal[5]}
+                onClick={isPlayerMode ? handleTurn : botMove}
+                disabled={isThinking}
+                isWinning={winCell && winCell.includes(5)}
+              />
             </div>
             <div className="flex flex-row items-center justify-center">
-              <div
-                className={`cells ${boardVal[6] == null ? 'cursor-pointer' : 'pointer-none'} flex rounded-bl-2xl ${winCell && winCell.includes(6) ? 'bg-green-200' : ''}`}
-                onClick={() => {
-                  if (!isThinking) {
-                    isPlayerMode ? handleTurn(6) : botMove(6);
-                  }
-                }}
-              >
-                {boardVal[6] === 'O' ? (
-                  <PlayerO key={`O-6-${boardVal[6]}`} />
-                ) : boardVal[6] === 'X' ? (
-                  <PlayerX key={`X-6-${boardVal[6]}`} />
-                ) : (
-                  boardVal[6]
-                )}
-              </div>
-              <div
-                className={`cells ${boardVal[7] == null ? 'cursor-pointer' : 'pointer-none'} flex border-r-2 border-l-2 ${winCell && winCell.includes(7) ? 'bg-green-200' : ''}`}
-                onClick={() => {
-                  if (!isThinking) {
-                    isPlayerMode ? handleTurn(7) : botMove(7);
-                  }
-                }}
-              >
-                {boardVal[7] === 'O' ? (
-                  <PlayerO key={`O-7-${boardVal[7]}`} />
-                ) : boardVal[7] === 'X' ? (
-                  <PlayerX key={`X-7-${boardVal[7]}`} />
-                ) : (
-                  boardVal[7]
-                )}
-              </div>
-              <div
-                className={`cells ${boardVal[8] == null ? 'cursor-pointer' : 'pointer-none'} flex rounded-br-2xl ${winCell && winCell.includes(8) ? 'bg-green-200' : ''}`}
-                onClick={() => {
-                  if (!isThinking) {
-                    isPlayerMode ? handleTurn(8) : botMove(8);
-                  }
-                }}
-              >
-                {boardVal[8] === 'O' ? (
-                  <PlayerO key={`O-8-${boardVal[8]}`} />
-                ) : boardVal[8] === 'X' ? (
-                  <PlayerX key={`X-8-${boardVal[8]}`} />
-                ) : (
-                  boardVal[8]
-                )}
-              </div>
+              <Cell
+                index={6}
+                value={boardVal[6]}
+                onClick={isPlayerMode ? handleTurn : botMove}
+                disabled={isThinking}
+                isWinning={winCell && winCell.includes(6)}
+                extraClass="rounded-bl-2xl"
+              />
+              <Cell
+                index={7}
+                value={boardVal[7]}
+                onClick={isPlayerMode ? handleTurn : botMove}
+                disabled={isThinking}
+                isWinning={winCell && winCell.includes(7)}
+                extraClass="border-r-2 border-l-2"
+              />
+              <Cell
+                index={8}
+                value={boardVal[8]}
+                onClick={isPlayerMode ? handleTurn : botMove}
+                disabled={isThinking}
+                isWinning={winCell && winCell.includes(8)}
+                extraClass="rounded-br-2xl"
+              />
             </div>
           </>
         )}
