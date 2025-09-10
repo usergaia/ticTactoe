@@ -2,7 +2,7 @@ export const Players = ({ scoreX, scoreO, tieScore }) => {
   return (
     <>
       {/* player container */}
-      <div className="players">
+      <div className="players mt-10">
         <div className="flex flex-row rounded-lg">
           <div className="player-cont inset-2 border-2 border-l-8 border-red-700/10 border-l-red-700 bg-[#ff8a5c4d] text-left font-mono font-bold shadow-lg">
             Player <span className="text-red-600">X</span>
